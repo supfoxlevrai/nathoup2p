@@ -1,0 +1,2 @@
+Le fichier nommé "CoucHexa" est une copie d'un fichier du même nom dans un autre dossier.
+Clonage eu lieu car Java n'arrivait pas à import le programme dans des dossiers différents.
