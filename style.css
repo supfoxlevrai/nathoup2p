@@ -1,0 +1,46 @@
+
+/*Balise*/
+button {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+}
+
+h1{
+    display:flex;
+    margin-bottom: 100px;
+    justify-content: center;
+}
+
+textarea{
+    resize: none;
+}
+/*ID*/
+
+/*Classe*/
+.container{
+    border: 10px solid red;
+    padding: 1px 1px 1px 1px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20em;
+    width: 60em;
+}
+
+.container-button{
+    border: 10px solid black;
+    height: auto;
+    width: auto;
+}
+
+.screen{
+    border: 10px solid green;
+    margin-left: 400px;
+    position: absolute;
+    display: inline-block;
+    height: auto;
+    width: auto;
+}
