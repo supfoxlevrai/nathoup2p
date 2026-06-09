@@ -31,7 +31,9 @@ function wrapNathouA(buffer){
      * seqArchive : le numéro de la page dans l'archive (la séquence) du message dans le tableau 
      * / barrière séparateur finale
      * 
-     * pourquoi seq/10-0.1 ? Car je prend le nombre de 
+     * pourquoi seq/10-0.1 ? Car lorque cette fonction est appelé, seq est dans la table de 10. De ce fait, on va divisé
+     * par 10, pour obtenir le nombre de page. Or, si vous regardez bien, une ligne avant que la fonction est appelé
+     * seq est incrémenté. De ce fait, on fais - 0.1 car 11/10 = 1.1, 21/10 = 2.1,... N1/10 = N.1... 
      */
     let seqArchive = seq/10-0.1;
     let wrappedMessage = "+&["+buffer+"]/"+seqArchive+"/"
@@ -59,16 +61,16 @@ $("input").on("keypress", (e)=>{
             buffer.push(wrapNathouB(message, seq++));
             archive.push(wrapNathouA(buffer));
             buffer = [];
-
+            
         }
         else{
             buffer.push(wrapNathouB(message, seq++));
             //seqplus();
-            $('input').val("");
-            wssend(message);
             
         }
-        
+        $('input').val("");
+        wssend(message);
+        wssend(wrapNathouB(message, seq-1))
         console.log("buffer : ");
         console.log(buffer);
 

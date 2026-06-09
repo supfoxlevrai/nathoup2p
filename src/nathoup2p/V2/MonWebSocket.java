@@ -4,13 +4,17 @@ import org.java_websocket.server.WebSocketServer;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import java.net.*;
+import java.util.*;
 
 //javac -cp "..:Java-WebSocket-1.6.0.jar" nathoup2p/V2/MonWebSocket.java dans /src/
 
 public class MonWebSocket extends WebSocketServer{
+    private static final ArrayList<String[]> ARCHIVE = new ArrayList<String[]>();
+    private static String[] Buffer;
 
     public MonWebSocket(int port) {//ouvre un port de connexion au "serveur"
         super(new InetSocketAddress(port));
+        MonWebSocket.Buffer = new String[9];
     }
 
     public void onStart(){//Dès qu'on ouvre la page
