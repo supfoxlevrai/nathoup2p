@@ -22,7 +22,7 @@ buttons.forEach(element => {
             span.textContent = message;
 
         }
-    })
+    });
 });
 
 function clearText(o){

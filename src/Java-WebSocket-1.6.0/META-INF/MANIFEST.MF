@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.3.0
+Build-Jdk-Spec: 18
+Bundle-Description: A barebones WebSocket client and server implementati
+ on written 100% in Java
+Bundle-Developers: TooTallNate;email="nathan@tootallnate.net";name="Nath
+ an Rajlich",marci4;email="admin@marci4.de";name="Marcel Prestel"
+Bundle-DocURL: https://github.com/TooTallNate/Java-WebSocket
+Bundle-License: "MIT License";link="https://github.com/TooTallNate/Java-
+ WebSocket/blob/master/LICENSE"
+Bundle-ManifestVersion: 2
+Bundle-Name: Java-WebSocket
+Bundle-SCM: url="https://github.com/TooTallNate/Java-WebSocket",tag=HEAD
+Bundle-SymbolicName: Java-WebSocket
+Bundle-Version: 1.6.0
+Export-Package: org.java_websocket;uses:="javax.net.ssl,org.java_websock
+ et.drafts,org.java_websocket.enums,org.java_websocket.exceptions,org.ja
+ va_websocket.framing,org.java_websocket.handshake,org.java_websocket.in
+ terfaces,org.java_websocket.protocols,org.java_websocket.server";versio
+ n="1.6.0",org.java_websocket.client;uses:="javax.net,javax.net.ssl,org.
+ java_websocket,org.java_websocket.drafts,org.java_websocket.enums,org.j
+ ava_websocket.framing,org.java_websocket.handshake,org.java_websocket.p
+ rotocols";version="1.6.0",org.java_websocket.drafts;uses:="org.java_web
+ socket,org.java_websocket.enums,org.java_websocket.exceptions,org.java_
+ websocket.extensions,org.java_websocket.framing,org.java_websocket.hand
+ shake,org.java_websocket.protocols";version="1.6.0",org.java_websocket.
+ enums;version="1.6.0",org.java_websocket.exceptions;uses:="org.java_web
+ socket";version="1.6.0",org.java_websocket.extensions;uses:="org.java_w
+ ebsocket.exceptions,org.java_websocket.framing";version="1.6.0",org.jav
+ a_websocket.extensions.permessage_deflate;uses:="org.java_websocket.exc
+ eptions,org.java_websocket.extensions,org.java_websocket.framing";versi
+ on="1.6.0",org.java_websocket.framing;uses:="org.java_websocket.enums,o
+ rg.java_websocket.exceptions";version="1.6.0",org.java_websocket.handsh
+ ake;version="1.6.0",org.java_websocket.interfaces;uses:="javax.net.ssl"
+ ;version="1.6.0",org.java_websocket.protocols;version="1.6.0",org.java_
+ websocket.server;uses:="javax.net.ssl,org.java_websocket,org.java_webso
+ cket.drafts,org.java_websocket.handshake";version="1.6.0",org.java_webs
+ ocket.util;uses:="org.java_websocket.exceptions";version="1.6.0"
+Import-Package: javax.net,javax.net.ssl,org.java_websocket,org.java_webs
+ ocket.drafts,org.java_websocket.enums,org.java_websocket.exceptions,org
+ .java_websocket.extensions,org.java_websocket.framing,org.java_websocke
+ t.handshake,org.java_websocket.interfaces,org.java_websocket.protocols,
+ org.java_websocket.server,org.java_websocket.util,org.slf4j;version="[2
+ .0,3)"
+Multi-Release: true
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
