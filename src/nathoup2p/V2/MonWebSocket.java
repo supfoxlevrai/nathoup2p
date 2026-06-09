@@ -1,4 +1,4 @@
-package nathoup2p.v2;
+package nathoup2p.V2;
 
 import org.java_websocket.server.WebSocketServer;
 import org.java_websocket.WebSocket;

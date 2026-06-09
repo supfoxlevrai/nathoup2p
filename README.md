@@ -82,8 +82,8 @@ Au moment où j'écris, nous sommes à la V1 de Nathoup2p et du CoucHexa et la V
 
 ```code
 javac nathoup2p/*.java
-java nathoup2p/MonServ.java (console A)
-java nathoup2p/MonClient.java (console B)
+java nathoup2p/MonServ.java (console A)  #ou bien se mettre en tant que Serveur dans MonClient
+java nathoup2p/MonClient.java (console B) 
 ```
 
 # Note - Fin - À Retenir

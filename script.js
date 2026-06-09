@@ -1,7 +1,6 @@
 const buttons = document.querySelectorAll("button");
 const span = document.querySelector('span');
 
-
 buttons.forEach(element => {
     element.addEventListener('click',(e)=>{
         console.log(e.target.textContent);

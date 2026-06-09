@@ -13,8 +13,8 @@ h1{
     justify-content: center;
 }
 
-textarea{
-    resize: none;
+span {
+    border: 10px solid greenyellow;
 }
 /*ID*/
 
