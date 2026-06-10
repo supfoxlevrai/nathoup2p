@@ -1,5 +1,5 @@
 const socket = new WebSocket("ws://localhost:5000");
-let buffer = []; //tableau qui va stocké les messages (se vide tout les 100 seq)
+let buffer = []; //tableau qui va stocké les messages (se vide tout les 10 seq)
 const archive = []; //Un tableau de tableau qui stocke les buffers
 let seq = 1; 
 
@@ -78,10 +78,7 @@ $("input").on("keypress", (e)=>{
         console.log("archive : ");
         console.log(archive);
 
-        console.log("--------------------");
-
-
-        
+        console.log("--------------------");        
     }
 })
 
