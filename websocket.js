@@ -69,7 +69,7 @@ $("input").on("keypress", (e)=>{
             
         }
         $('input').val("");
-        wssend(message);
+        //wssend(message);
         wssend(wrapNathouB(message, seq-1))
         console.log("buffer : ");
         console.log(buffer);
@@ -82,6 +82,14 @@ $("input").on("keypress", (e)=>{
     }
 })
 
+// Écouter les messages
+socket.addEventListener("message", (event) => {
+  console.log("Voici un message du serveur", event.data);
+  span.textContent = "";
+
+  let message_serveur = event.data;
+  span.textContent = message_serveur;
+});
 
 /*function seqplus(){
     seq++;
