@@ -13,11 +13,31 @@ h1{
     justify-content: center;
 }
 
-span {
-    border: 10px solid greenyellow;
-}
 /*ID*/
 
+#screen{
+    border: 10px solid green;
+    margin-left: 400px;
+    position: flex;
+    display: inline-block;
+    height: 20em;
+    max-width: 100px;
+}
+
+#screen-archive{
+    border: 10px solid rgb(255, 153, 0);
+    margin-left: 400px;
+    position: absolute;
+    display:flex;
+    height: auto;
+    width: auto;
+    /*transition: opacity 0.9s ease-in-out;*/
+}
+
+#screen-text{
+    border: 1px solid rgb(85, 255, 0);
+    /*transition: opacity 0.9s ease-in-out;*/
+}
 /*Classe*/
 .container{
     border: 10px solid red;
@@ -36,11 +56,6 @@ span {
     width: auto;
 }
 
-.screen{
-    border: 10px solid green;
-    margin-left: 400px;
-    position: absolute;
-    display: inline-block;
-    height: auto;
-    width: auto;
-}
+/*.invisible{
+    opacity: 0;
+}*/

@@ -1,7 +1,10 @@
-const socket = new WebSocket("ws://localhost:5000");
+let port = 5140;
+const socket = new WebSocket("ws://localhost:"+port);
 let buffer = []; //tableau qui va stocké les messages (se vide tout les 10 seq)
 const archive = []; //Un tableau de tableau qui stocke les buffers
+const fin = "$fin"; //mot d'arrêt de connexion
 let seq = 1; 
+//$("#screen-text").addClass('invisible');
 
 function wssend(message){
     socket.send(message);
@@ -54,9 +57,12 @@ $("input").on("keypress", (e)=>{
     console.log(e.code);
     console.log($('input').val())*/
 
-    let message = $('input').val()
+    let message = $('input').val();
+    
+    //$("#screen-text").addClass('invisible');
     if(e.code == "Enter" && message.trim() != ""){
-
+        //$("#screen-text").removeClass('invisible');
+        
         if(seq%10 == 0){
             buffer.push(wrapNathouB(message, seq++));
             archive.push(wrapNathouA(buffer));
@@ -70,7 +76,8 @@ $("input").on("keypress", (e)=>{
         }
         $('input').val("");
         //wssend(message);
-        wssend(wrapNathouB(message, seq-1))
+        wssend(wrapNathouB(message, seq-1));
+
         console.log("buffer : ");
         console.log(buffer);
 
@@ -78,17 +85,20 @@ $("input").on("keypress", (e)=>{
         console.log("archive : ");
         console.log(archive);
 
-        console.log("--------------------");        
+        console.log("--------------------"); 
+        
+        //met dans un écran "d'archive"
+        document.getElementById("screen-archive").textContent += wrapNathouB(message, seq-1);
     }
 })
 
 // Écouter les messages
 socket.addEventListener("message", (event) => {
   console.log("Voici un message du serveur", event.data);
-  span.textContent = "";
+  //span.textContent = "";
 
   let message_serveur = event.data;
-  span.textContent = message_serveur;
+  span.textContent += "\n"+message_serveur;
 });
 
 /*function seqplus(){

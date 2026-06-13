@@ -28,36 +28,68 @@ public class MonWebSocket extends WebSocketServer{
 
 
     public void onOpen(WebSocket conn, ClientHandshake handshake){//Dès qu'on ouvre la page
-        System.out.println("CONN : "+conn+"\nUne connexion a eu lieu\nHANDSHAKE : "+handshake);
+        //System.out.println("CONN : "+conn);
+        System.out.println("Une connexion a eu lieu");
+        //System.out.println("HANDSHAKE : "+handshake);
+
     }
 
 
     public void onClose(WebSocket conn, int code, String reason, boolean remote){//Dès qu'on ferme la page
-        System.out.println("CONN : "+conn+"\nUne connexion a été fermé\nCODE : "+reason+" "+code+"\nREMOTE : "+remote);
+        //System.out.println("CONN : "+conn);
+        System.out.println("Une connexion a été fermé");
+        //System.out.println("CODE : "+reason);
+        //System.out.println("REMOTE : "+remote);
 
-        try{
+        /*try{
             this.stop();
         }
         catch(InterruptedException I){
             System.err.println(I.getMessage());
-        }
+        }*/
     }
 
 
    public void onMessage(WebSocket conn, String message_recu) {
        // [RÉCEPTION] Intercepte les messages envoyés par le JavaScript
-       if (message_recu.length() > 7) {
+
+       if (message_recu.length() >= 7) {
            String message = MonWebSocket.PNAB(message_recu);
            System.out.println("MESSAGE : " + message);
-           this.onSend(conn, message);
-           }
+
+           if((message.toLowerCase()).equals("$fin")){
+
+               try{this.stop();//Demande au serveur d'arrêter d'écouter sur le port
+                   }
+                    catch(InterruptedException I){
+                       System.err.println(I.getMessage());
+                    }
+                    finally{
+                        System.exit(0);//Tue instantanément le programme Java et ferme le terminal
+                    }
+            }
+
+           if(message.startsWith("+#")){//+#
+                this.systemCommandLine(message, conn);
+            }
+
+            else{
+                int i = 0;
+                for(WebSocket ws:this.getConnections()){
+                    this.onSend(ws, message); //Envoie du message aux connexion
+                    i++;
+                }
+            }
+        }
+
        else {
             System.out.println("MESSAGE : " + message_recu);
+            this.onSend(conn, message_recu);
             }
     }
 
     public void onSend(WebSocket conn, String message_recu){
-        conn.send("+\n+\n ["+message_recu+"]\n+\n+\nJ");
+        conn.send("\n+\n+\n ["+message_recu+"]\n+\n+\n");
     }
 
     public void onError(WebSocket conn, Exception ex) {
@@ -70,12 +102,50 @@ public class MonWebSocket extends WebSocketServer{
         //Condition de sortie un peu moche mais assumée
         boolean remplit = false;
         int i = 0;
-        while(!remplit){
+        while(!remplit && i < BUffer.length){
             String place = BUffer[i];
             if (place == null) {
                 BUffer[i] = message;
                 remplit = true; //pour ne remplir qu'une case à la fois
             }
+            i++;
+        }
+    }
+
+    /*private boolean isSystemCommandLine(){
+        return this.startsWith("+#");
+    }*/
+
+    private void systemCommandLine(String commandLine, WebSocket conn){
+        //On vérifie si la commande envoyé existe
+
+        //On vérfie déjà si c'est une commande system (+#)
+        //if(!commandLine.isSystemCommandLine()){return false;} normalement oui lors de l'appel de cette méthode
+
+        //On va vérifier ensuite que la commande n'est pas juste un texte où, comme de par hasard, il se trouve qu'une commande systeme se retrouve au début
+
+        String command = String.valueOf(commandLine.substring(2, commandLine.length()));
+        int longueur_command = command.length();
+
+
+        switch(longueur_command){
+            case 4:
+                //USER
+                if(command.equals("USER")){
+                    //Va retourner toute la liste de toutes les fenêtres de navigateurs actuellement ouvertes et connectées au serveur
+                    //Tout les clients/utilisateurs actifs en gros
+                    int i = 0;
+                    for(WebSocket ws:this.getConnections()){
+                        System.out.println("CONNEXION "+(i+1)+" : "+ ws);//Connexion X
+                        this.onSend(conn,(ws+""));//Celui qui a fait la commande obtient le résultat, non pas les autres!
+                        i++;
+                    }
+                }
+                break;
+
+            default:
+                break;
+
         }
     }
 
