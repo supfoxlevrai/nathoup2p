@@ -6,38 +6,53 @@ const fin = "$fin"; //mot d'arrêt de connexion
 let seq = 1; 
 //$("#screen-text").addClass('invisible');
 
+/**
+ * Envoie un message brute au serveur WebSocket (JAVA)
+ * @param {message} message : le message textuel à envoyer
+ */
 function wssend(message){
     socket.send(message);
 }
 
+/**
+ * Enrobe un message textuel individuel pour le Buffer selon le protocole PNAB.
+ * * Structure du signal (`+@message/seq/`) :
+ * - `+` : Signal d'ouverture ("Attention, un nouveau message commence ici !")
+ * - `@` : Étiquette qui annonce le contenu textuel
+ * - `message` : Le texte de l'utilisateur
+ * - `/` : Barrière séparateur (texte fini)
+ * - `seq` : Le numéro d'ordre (la séquence) du message dans le tableau
+ * - `/` : Barrière séparateur finale
+ * * 
+ * @param {string} message - Le texte de l'utilisateur à enrober.
+ * @param {number} seq - Le numéro de séquence actuel du message.
+ * @returns {string} Le message enrobé prêt pour l'envoi.
+ */
 function wrapNathouB(message, seq){
-    /**
-     * + : signal d'ouverture ("Attention, un nouveau message commence ici !")
-     * @ : étiquette qui annonce le contenu textuel
-     * message : le texte de l'utilisateur
-     * / : barrière séparateur (texte fini)
-     * seq : le numéro d'ordre (la séquence) du message dans le tableau 
-     * / barrière séparateur finale
-     */
     let wrappedMessage = "+@"+message+"/"+seq+"/"
     return wrappedMessage;
 }
 
+/**
+ * Enrobe un bloc complet de Buffer pour l'archivage selon le protocole PNAB.
+ * * Structure du signal (`+&[buffer]/seqArchive/`) :
+ * - `+` : Signal d'ouverture ("Attention, un nouveau bloc commence ici !")
+ * - `&` : Étiquette qui annonce le nouveau buffer
+ * - `[` : Encadré d'ouverture du nouveau buffer
+ * - `buffer` : Le contenu buffer copié (groupe de 50)
+ * - `]` : Encadré de fermeture du nouveau buffer
+ * - `/` : Barrière séparateur (texte fini)
+ * - `seqArchive` : Le numéro de la page dans l'archive
+ * - `/` : Barrière séparateur finale
+ * * Pourquoi `seq/10 - 0.1` ? 
+ * Lorsque cette fonction est appelée, `seq` vient d'être incrémenté et est passé au palier supérieur (11, 21, 31...).
+ * On divise par 10 pour obtenir le numéro de page. Le `- 0.1` permet de retomber pile sur le bon entier de la page déchue 
+ * (ex: 11 / 10 = 1.1 -> 1.1 - 0.1 = Page 1 | 21 / 10 = 2.1 -> 2.1 - 0.1 = Page 2).
+ * * 
+ * @param {Array} buffer - Le tableau de messages à archiver.
+ * @returns {string} Le bloc d'archive enrobé prêt pour l'envoi.
+ */
 function wrapNathouA(buffer){
-    /**
-     * + : signal d'ouverture ("Attention, un nouveau bloc commence ici !")
-     * & : étiquette qui annonce le nouveau buffer
-     * [ : encadré d'ouverture du nouveau buffer
-     * buffer : le contenu buffer copié (groupe de 50)
-     * ] : encadré de fermeture du nouveau buffer
-     * / : barrière séparateur (texte fini)
-     * seqArchive : le numéro de la page dans l'archive (la séquence) du message dans le tableau 
-     * / barrière séparateur finale
-     * 
-     * pourquoi seq/10-0.1 ? Car lorque cette fonction est appelé, seq est dans la table de 10. De ce fait, on va divisé
-     * par 10, pour obtenir le nombre de page. Or, si vous regardez bien, une ligne avant que la fonction est appelé
-     * seq est incrémenté. De ce fait, on fais - 0.1 car 11/10 = 1.1, 21/10 = 2.1,... N1/10 = N.1... 
-     */
     let seqArchive = seq/10-0.1;
     let wrappedMessage = "+&["+buffer+"]/"+seqArchive+"/"
     return wrappedMessage;
