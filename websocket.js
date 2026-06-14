@@ -1,9 +1,11 @@
-let port = 5140;
+let port = 5680;
 const socket = new WebSocket("ws://localhost:"+port);
 let buffer = []; //tableau qui va stocké les messages (se vide tout les 10 seq)
 const archive = []; //Un tableau de tableau qui stocke les buffers
 const fin = "$fin"; //mot d'arrêt de connexion
 let seq = 1; 
+let stock_message = 0;
+
 //$("#screen-text").addClass('invisible');
 
 /**
@@ -112,10 +114,36 @@ socket.addEventListener("message", (event) => {
   console.log("Voici un message du serveur", event.data);
   //span.textContent = "";
 
-  let message_serveur = event.data;
-  span.textContent += "\n"+message_serveur;
+  let message_serveur_data = event.data;//le message du serveur
+
+  //On enlève les tout pour ne garder que la partie entre crochet
+  let message_serveur = (message_serveur_data.substring(6, message_serveur_data.length)).substring(0, message_serveur_data.length-10);
+    
+  if(message_serveur.startsWith("[+$COUNT")){
+
+    //On enlève le "seq" qui se retrouve avec le compteur (/X/)
+    let nombre = message_serveur.substring(0, 12);
+    //On enlève tout ce qui n'est pas un chiffre/nombre
+    let connectee = nombre.replace(/[^0-9]/g, "");
+    compteur(connectee);//Affichage
+
+  }
+
+  if(stock_message > 10){//Mis pour l'instant pour l'écran
+    span.textContent = "";
+    stock_message = 0;
+    }
+    span.textContent += "\n"+message_serveur;
+    stock_message += 1;
+        console.log("f")
+
 });
 
+function compteur(n){
+    connected.textContent = n;
+    console.log("e")
+
+}
 /*function seqplus(){
     seq++;
 } en commentaire car seq++*/

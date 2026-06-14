@@ -1,5 +1,7 @@
 const buttons = document.querySelectorAll("button");
 const span = document.getElementById('screen-text');
+const connected = document.getElementById('connected');
+
 
 buttons.forEach(element => {
     element.addEventListener('click',(e)=>{

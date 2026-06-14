@@ -15,6 +15,8 @@ import java.util.*;
 public class MonWebSocket extends WebSocketServer{
     private static final ArrayList<String[]> ARCHIVE = new ArrayList<String[]>();
     private static String[] BUffer;
+    private static int connected;
+    private static int systemMessage;
 
     public MonWebSocket(int port) {//ouvre un port de connexion au "serveur"
         super(new InetSocketAddress(port));
@@ -24,12 +26,22 @@ public class MonWebSocket extends WebSocketServer{
     /*MÉTHODE REDEFINIE*/
     public void onStart(){//Dès qu'on ouvre la page
         System.out.println("Le Serveur tourne bien !");
+        MonWebSocket.connected = 0;
+        MonWebSocket.systemMessage = 0;
     }
 
 
     public void onOpen(WebSocket conn, ClientHandshake handshake){//Dès qu'on ouvre la page
         //System.out.println("CONN : "+conn);
         System.out.println("Une connexion a eu lieu");
+        MonWebSocket.connected++;
+        systemMessage++;
+        int compteur = MonWebSocket.connected;
+
+        for(WebSocket ws:this.getConnections()){
+            this.onSend(ws, "+$CONNECTED : "+conn+"/"+MonWebSocket.systemMessage+"/");
+            this.onSend(ws, "+$COUNT : "+compteur+"/"+MonWebSocket.systemMessage+"/");
+        }
         //System.out.println("HANDSHAKE : "+handshake);
 
     }
@@ -38,6 +50,15 @@ public class MonWebSocket extends WebSocketServer{
     public void onClose(WebSocket conn, int code, String reason, boolean remote){//Dès qu'on ferme la page
         //System.out.println("CONN : "+conn);
         System.out.println("Une connexion a été fermé");
+        MonWebSocket.connected--;
+        systemMessage++;
+        int compteur = MonWebSocket.connected;
+
+        for(WebSocket ws:this.getConnections()){
+            this.onSend(ws, "+$DISCONNECTED : "+conn+"/"+MonWebSocket.systemMessage+"/");
+            this.onSend(ws, "+$COUNT : "+compteur+"/"+MonWebSocket.systemMessage+"/");
+        }
+
         //System.out.println("CODE : "+reason);
         //System.out.println("REMOTE : "+remote);
 
@@ -89,7 +110,7 @@ public class MonWebSocket extends WebSocketServer{
     }
 
     public void onSend(WebSocket conn, String message_recu){
-        conn.send("\n+\n+\n ["+message_recu+"]\n+\n+\n");
+        conn.send("\n+\n+\n ["+message_recu+"]\n");
     }
 
     public void onError(WebSocket conn, Exception ex) {

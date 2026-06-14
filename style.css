@@ -18,16 +18,19 @@ h1{
 #screen{
     border: 10px solid green;
     margin-left: 400px;
-    position: flex;
+    position: absolute;
     display: inline-block;
     height: 20em;
-    max-width: 100px;
+    width: 30em;
+    max-width: 90000em;
+    left: 300px;
 }
 
 #screen-archive{
     border: 10px solid rgb(255, 153, 0);
-    margin-left: 400px;
     position: absolute;
+    top:350px;
+    left:-700px;
     display:flex;
     height: auto;
     width: auto;
@@ -47,11 +50,19 @@ h1{
     align-items: center;
     justify-content: center;
     height: 20em;
-    width: 60em;
+    width: 40em;
 }
 
 .container-button{
     border: 10px solid black;
+    height: auto;
+    width: auto;
+}
+
+.container-connected{
+    border: 10px solid rgb(255, 72, 72);
+    position:absolute;
+    top: 3px;
     height: auto;
     width: auto;
 }
