@@ -1,14 +1,14 @@
 # PROJET : NATHOU.P2P (Système de messagerie décentralisée)
 <p align="center">
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/WebSockets-010101?style=for-the-badge&logo=socketdotio&logoColor=white" alt="WebSockets" />
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white" alt="Java" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/WebSockets-010101?style=flat&logo=socketdotio&logoColor=white" alt="WebSockets" />
   <br />
-  <img src="https://img.shields.io/badge/Protocol-PNAB%20v1.0-blue?style=for-the-badge" alt="Protocol PNAB" />
-  <img src="https://img.shields.io/badge/Architecture-Multicast%20P2P-brightgreen?style=for-the-badge" alt="P2P" />
+  <img src="https://img.shields.io/badge/Protocol-PNAB%20v1.0-blue?style=flat" alt="Protocol PNAB" />
+  <img src="https://img.shields.io/badge/Architecture-Multicast%20P2P-brightgreen?style=flat" alt="P2P" />
   <br />
-  <img src="https://img.shields.io/badge/Emergency%20Stop-Secured-red?style=for-the-badge&logo=githubactions&logoColor=white" alt="Emergency Stop" />
-  <img src="https://img.shields.io/badge/JSDoc-Documented-green?style=for-the-badge&logo=jsdoc&logoColor=white" alt="JSDoc" />
+  <img src="https://img.shields.io/badge/Emergency%20Stop-Secured-red?style=flat&logo=githubactions&logoColor=white" alt="Emergency Stop" />
+  <img src="https://img.shields.io/badge/JSDoc-Documented-green?style=flat&logo=jsdoc&logoColor=white" alt="JSDoc" />
 </p>
 
 Auteur      : Nathanaël Dos Santos
