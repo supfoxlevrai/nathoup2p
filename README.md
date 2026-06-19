@@ -9,7 +9,7 @@ ___
 
 Bonjour !
 
-Si vous voyez cette note, c'est que vous êtes sur le point de ou avez déjà utilisé mon programme et que vous voulez plus d'information sur l'origine de ce projet (ou juste, vous avez missclick ! [bruh](https://media1.tenor.com/m/G0YBmZyJU6IAAAAd/ratio-cope.gif =20x).
+Si vous voyez cette note, c'est que vous êtes sur le point de ou avez déjà utilisé mon programme et que vous voulez plus d'information sur l'origine de ce projet (ou juste, vous avez missclick ! [bruh](https://media1.tenor.com/m/G0YBmZyJU6IAAAAd/ratio-cope.gif=20x).
 
 # I- "Préambule"
 
