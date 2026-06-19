@@ -41,6 +41,11 @@ h1{
     border: 1px solid rgb(85, 255, 0);
     /*transition: opacity 0.9s ease-in-out;*/
 }
+
+.container .container-connected div{
+    position: relative;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 /*Classe*/
 .container{
     border: 10px solid red;

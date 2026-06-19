@@ -68,13 +68,13 @@ buttons.forEach(element => {
     });
 });
 
-$("input").on("keypress", (e)=>{
+$("#keyboard").on("keypress", (e)=>{
     /*console.log(e);
     console.log(e.nodeName);
     console.log(e.code);
-    console.log($('input').val())*/
+    console.log($('#keyboard').val())*/
 
-    let message = $('input').val();
+    let message = $('#keyboard').val();
     
     //$("#screen-text").addClass('invisible');
     if(e.code == "Enter" && message.trim() != ""){
@@ -91,7 +91,7 @@ $("input").on("keypress", (e)=>{
             //seqplus();
             
         }
-        $('input').val("");
+        $('#keyboard').val("");
         //wssend(message);
         wssend(wrapNathouB(message, seq-1));
 

@@ -110,7 +110,7 @@ public class MonWebSocket extends WebSocketServer{
     }
 
     public void onSend(WebSocket conn, String message_recu){
-        conn.send("\n+\n+\n ["+message_recu+"]\n");
+        conn.send("\n+\n+\n ["+message_recu+"]\n+\n+\n");
     }
 
     public void onError(WebSocket conn, Exception ex) {
