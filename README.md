@@ -1,4 +1,17 @@
-# PROJET : NATHOU.P2P (Système de messagerie décentralisée) Note À Lire
+# PROJET : NATHOU.P2P (Système de messagerie décentralisée)
+<!-- Technologies principales -->
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-each-badge&style=for-the-badge&logo=javascript&logoColor=black)
+![WebSockets](https://img.shields.io/badge/WebSockets-010101?style=for-the-badge&logo=socketdotio&logoColor=white)
+
+<!-- État du protocole et de l'architecture -->
+![Protocol PNAB](https://img.shields.io/badge/Protocol-PNAB%20v1.0-blue?style=for-the-badge)
+![P2P Architecture](https://img.shields.io/badge/Architecture-Multicast%20P2P-brightgreen?style=for-the-badge)
+![Buffer Status](https://img.shields.io/badge/Buffer-Auto--Archive%20(10%20seq)-orange?style=for-the-badge)
+
+<!-- Sécurité & Qualité -->
+![Emergency Stop](https://img.shields.io/badge/Emergency%20Stop-Secured-red?style=for-the-badge&logo=githubactions&logoColor=white)
+![Documentation](https://img.shields.io/badge/JSDoc-Documented-puregreen?style=for-the-badge&logo=jsdoc&logoColor=white)
 
 Auteur      : Nathanaël Dos Santos
 Formation (au moment du Projet)   : BUT1 Informatique
