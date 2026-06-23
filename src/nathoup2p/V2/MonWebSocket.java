@@ -6,8 +6,30 @@ import org.java_websocket.handshake.ClientHandshake;
 import java.net.*;
 import java.util.*;
 
-//javac -cp ".:Java-WebSocket-1.6.0.jar:slf4j-api-2.0.7.jar:slf4j-api-2.1.0-alpha1.jar" nathoup2p/V2/*.java
-//java -cp ".:Java-WebSocket-1.6.0.jar:slf4j-api-2.0.7.jar:slf4j-api-2.1.0-alpha1.jar" nathoup2p/V2/MainWebSocket.java
+/*
+================================================================================
+⚠️ ATTENTION : Il faut impérativement exécuter ces commandes depuis la RACINE 
+du projet (le dossier 'src'), là où se trouvent les fichiers .jar !
+================================================================================
+
+LINUX & MACOS (Utilisent le deux-points ":" comme séparateur)
+================================================================================
+Compilation :
+javac -cp ".:Java-WebSocket-1.6.0.jar:slf4j-api-2.0.7.jar:slf4j-api-2.1.0-alpha1.jar" nathoup2p/V2/*.java
+
+Exécution :
+java -cp ".:Java-WebSocket-1.6.0.jar:slf4j-api-2.0.7.jar:slf4j-api-2.1.0-alpha1.jar" nathoup2p.V2.MainWebSocket
+
+================================================================================
+WINDOWS (Utilise le point-virgule ";" comme séparateur et les antislashes "\")
+================================================================================
+Compilation :
+javac -cp ".;Java-WebSocket-1.6.0.jar;slf4j-api-2.0.7.jar;slf4j-api-2.1.0-alpha1.jar" nathoup2p\V2\*.java
+
+Exécution :
+java -cp ".;Java-WebSocket-1.6.0.jar;slf4j-api-2.0.7.jar;slf4j-api-2.1.0-alpha1.jar" nathoup2p.V2.MainWebSocket
+================================================================================
+*/
 
 //IDÉE : JS --> EMAIL MAILTO
 

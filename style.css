@@ -46,6 +46,14 @@ h1{
     position: relative;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.container .container-text>div>span{
+    position: absolute;
+    top: 50px;
+    left: 120px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 /*Classe*/
 .container{
     border: 10px solid red;

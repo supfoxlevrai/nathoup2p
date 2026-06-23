@@ -1,4 +1,4 @@
-let port = 5680;
+let port = 1479;
 const socket = new WebSocket("ws://localhost:"+port);
 let buffer = []; //tableau qui va stocké les messages (se vide tout les 10 seq)
 const archive = []; //Un tableau de tableau qui stocke les buffers
